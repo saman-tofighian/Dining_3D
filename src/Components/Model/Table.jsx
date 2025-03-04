@@ -1,9 +1,4 @@
-import {
-  PresentationControls,
-  Stage,
-  useGLTF,
-  useTexture,
-} from "@react-three/drei";
+import { OrbitControls, Stage, useGLTF, useTexture } from "@react-three/drei";
 import gsap from "gsap";
 import * as THREE from "three";
 import { useEffect } from "react";
@@ -71,15 +66,11 @@ export default function Table({
   }, [colorPlate]);
 
   return (
-    <PresentationControls
-      speed={1.5}
-      global
-      zoom={0.7}
-      polar={[-0.1, Math.PI / 4]}
-    >
-      <Stage environment="city" intensity={11} shadows={null}>
+    <>
+      <OrbitControls makeDefault rotateSpeed={0.4} />
+      <Stage environment="city" intensity={11}>
         <primitive object={model.scene} />
       </Stage>
-    </PresentationControls>
+    </>
   );
 }
